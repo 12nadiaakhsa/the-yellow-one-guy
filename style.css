@@ -1,0 +1,157 @@
+:root {
+    --bg-top: #e0f2f1; /* Mint pastel atas */
+    --bg-bottom: #f3e5f5; /* Lavender pastel bawah */
+    --pastel-pink: #ffb7b2;
+    --pastel-blue: #b2e2f2;
+    --text-dark: #5d5d5d;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: var(--text-dark);
+}
+
+/* Animasi Balon di Background */
+.bg-balloons {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    opacity: 0.6;
+    animation: floatUp 12s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+}
+
+/* Efek Flash Cahaya */
+.flash-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: white;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in;
+}
+
+.flash-active { opacity: 1; }
+
+/* Konten Utama */
+.container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.title { font-size: 2.2rem; color: #ff8b94; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+.title span { font-size: 3.5rem; color: #ff8b94; font-weight: 700; }
+
+.age-badge {
+    font-size: 8rem;
+    font-weight: 800;
+    color: var(--pastel-pink);
+    text-shadow: 4px 4px 0px white;
+    margin: -20px 0;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.cake {
+    font-size: 6rem;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+}
+
+.main-btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: white;
+    color: #ff8b94;
+    border: 2px solid #ff8b94;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 0px #ff8b94;
+}
+
+.main-btn:hover {
+    background: #ff8b94;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px #d6767d;
+}
+
+/* Modal Surat */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+}
+
+.paper {
+    background: #fffdf9;
+    width: 90%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.letter-title { color: #333; margin-top: 0; }
+.divider { border: 0; height: 1px; background: #ddd; margin: 20px 0; }
+
+.paper-content {
+    text-align: left;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+.signature {
+    margin-top: 30px;
+    text-align: right;
+    font-weight: 700;
+}
+
+.close {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #aaa;
+}
